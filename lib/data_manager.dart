@@ -5,10 +5,11 @@ import 'package:flutter_todo_app/task.dart';
 class DataManager extends ChangeNotifier{
   List<Category> categories = [];
 
-  void addCategory(String categoryTitle ){
+  int addCategory(String categoryTitle ){
     Category newCategory = Category(id: categories.length + 1, title: categoryTitle, tasks: List.empty(growable: true));
     categories.add(newCategory);
     notifyListeners();
+    return categories.length;
   }
 
   void updateCategoryName(int categoryId, String newCategoryTitle){

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app/data_manager.dart';
+import 'package:flutter_todo_app/tasks_widget.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -85,7 +86,8 @@ class MyHomePage extends StatelessWidget {
             ),
             actions: <Widget>[
               TextButton(onPressed: (){
-                Provider.of<DataManager>(context, listen: false).addCategory(newCategoryTitle);              
+                var categoryId = Provider.of<DataManager>(context, listen: false).addCategory(newCategoryTitle);  
+                Navigator.push(context, MaterialPageRoute(builder: (context) => TasksWidget(categoryId: categoryId)));
               }, child: Container(
                 padding: const EdgeInsets.all(14),
                 child: const Text("Done"),
