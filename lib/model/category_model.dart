@@ -1,4 +1,4 @@
-import 'package:flutter_todo_app/task.dart';
+import 'package:flutter_todo_app/model/task_model.dart';
 
 class Category {
    int id;
@@ -12,6 +12,16 @@ class Category {
     required this.tasks
    });
 
+   String numOfTasksCompleted(){
+     int tasksCompleted = 0;
+     tasks.forEach((task) {
+       if(task.isComplete){
+         tasksCompleted++;
+       }
+     });
+
+     return "$tasksCompleted of ${tasks.length} tasks completed";
+   }
 void updateCategoryName(String newCategoryTitle){
    title = newCategoryTitle;
   }

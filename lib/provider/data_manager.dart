@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo_app/category_class.dart';
-import 'package:flutter_todo_app/task.dart';
+import 'package:flutter_todo_app/model/category_model.dart';
+import 'package:flutter_todo_app/model/task_model.dart';
 
 class DataManager extends ChangeNotifier{
   List<Category> categories = [];
@@ -39,6 +39,11 @@ class DataManager extends ChangeNotifier{
   void updateTaskName(int categoryId, int taskID, String newTaskTitle){
     var category = categories.firstWhere((element) => element.id == categoryId);
     category.updateTaskName(taskID, newTaskTitle);
+    notifyListeners();
+  }
+
+  void removeCategory(int index) {
+    categories.removeAt(index);
     notifyListeners();
   }
 }
